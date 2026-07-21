@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="xArm 원격조작에서 Tobii 화면 시선과 로봇 위험을 결합해 필요한 보조 카메라만 제시하는 독립 HRI 연구 Sightline-xArm">
+  <title>Sightline-xArm · xArm × Tobii Teleoperation Research</title>
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">본문으로</a>
+<header class="site-header"><nav class="nav" aria-label="주요 탐색"><a class="brand" href="index.html"><span class="brand-mark">S</span>Sightline-xArm</a><button class="nav-toggle" aria-expanded="false">메뉴</button><div class="nav-links"><a aria-current="page" href="index.html">연구 개요</a><a href="foundations/index.html">개념 교실</a><a href="study/index.html">실험 설계</a><a href="system/index.html">시스템·데이터</a><a href="evidence/related-work.html">문헌 지도</a><a href="evidence/media.html">시각 자료</a><a href="operations/roadmap.html">실행 계획</a></div></nav></header>
+<main id="main">
+  <section class="hero"><div class="hero-grid"><div><p class="eyebrow">Independent HRI study · xArm × Tobii · no VLA dependency</p><h1>필요한 순간에만,<br>필요한 시점을 보여준다.</h1><p class="lede"><strong>Sightline-xArm</strong>은 xArm 원격조작 중 가림과 다중 카메라 때문에 생기는 오류를 줄이기 위한 인간–로봇 상호작용 연구다. Tobii는 운영자가 화면에서 아직 확인하지 않은 작업 핵심 영역을 측정한다. 그 정보와 로봇의 접촉 위험을 결합해 보조 카메라를 제시하되, <strong>시선만으로 로봇이나 카메라를 움직이지 않는다.</strong></p><div class="hero-actions"><a class="button teal" href="#meaning">30초 안에 이해하기</a><a class="button secondary" href="study/index.html">실험 조건 보기</a></div><div class="toc"><a href="#meaning">주제의 뜻</a><a href="#problem">현장 문제</a><a href="#mechanism">작동 원리</a><a href="#gap">연구 공백</a><a href="#contribution">기여</a><a href="#decision">적합성</a></div></div><div class="hero-orbit" aria-hidden="true"><div class="orbit-ring"></div><div class="orbit-core">선택적<br>시점 보조</div><div class="orbit-node">Tobii<br>미검사 영역</div><div class="orbit-node">xArm<br>접촉 위험</div><div class="orbit-node">Camera<br>가림 상태</div></div></div></section>
+
+  <section class="section" id="meaning"><div class="section-head"><div><p class="eyebrow">What this study actually asks</p><h2>주제의 의미를 한 문장으로</h2></div><p>“Tobii로 xArm을 제어한다”는 넓고 혼잡한 표현을 버리고, 사용 상황·개입·비교조건·성과를 모두 고정한다.</p></div>
+    <div class="question-box"><p class="question">가려진 물체를 xArm으로 집어 옮기는 화면 기반 원격조작에서, 운영자가 아직 확인하지 않은 접촉 영역과 로봇의 기하학적 위험을 결합해 필요한 보조 시점만 제시하면, 수동 전환·항상 켜진 다중뷰·기하 기반 자동뷰보다 조작 오류와 시각적 전환 비용을 줄일 수 있는가?</p></div>
+    <div class="scenario"><div class="scenario-label">구체적 장면</div><p>운영자가 overhead 영상을 보며 xArm gripper를 블록 쪽으로 이동한다. 마지막 3 cm에서 gripper가 목표를 가려 접촉면이 보이지 않지만 운영자는 side view를 아직 확인하지 않았다. 시스템은 <strong>접촉 위험이 높고 contact AOI가 미검사</strong>일 때만 side view를 확대한다. 운영자가 gamepad로 계속·수정·중지를 결정하며, 시선 자체는 어떤 물리 명령도 만들지 않는다.</p></div>
+    <dl class="definition-grid"><div><dt>사용자</dt><dd>화면으로 xArm을 직접 조작하는 운영자</dd></div><div><dt>입력</dt><dd>명시적 조작 입력, xArm 상태, 3개 카메라, Tobii 화면 gaze</dd></div><div><dt>개입</dt><dd>위험한 순간의 선택적 side/wrist view 제시</dd></div><div><dt>출력</dt><dd>로봇 명령이 아니라 화면 layout과 검사 cue</dd></div><div><dt>성과</dt><dd>접촉·drop·배치 오류, 시간, view/gaze 전환, workload</dd></div></dl>
+    <p class="not-this"><strong>하지 않는 연구:</strong> VLA 학습, 자연어 명령, gaze-to-target 자율 집기, 사용자의 의도·주의·이해 추론, eye tracking 기반 안전 인증이 아니다.</p>
+  </section>
+
+  <section class="section" id="problem"><div class="section-head"><div><p class="eyebrow">Problem</p><h2>카메라가 많아도 잘 보인다는 뜻은 아니다</h2></div><p>원격조작에서는 작업대를 직접 보지 못하므로 카메라가 곧 감각기관이다. 단일 시점은 가림에 취약하지만, 여러 영상을 계속 펼치면 작은 화면과 잦은 시선 전환이 새로운 부담이 된다.</p></div>
+    <div class="grid three"><article class="card coral"><span class="tag coral">Failure 01</span><h3>Self-occlusion</h3><p>gripper와 팔이 목표·접촉면을 가린다. 접근 초기에는 충분했던 overhead view가 마지막 정렬 단계에서는 불충분해진다.</p></article><article class="card coral"><span class="tag coral">Failure 02</span><h3>Depth ambiguity</h3><p>2D 화면에서 높이와 간격을 잘못 판단해 블록을 치거나 slot 가장자리에 걸친다. side/wrist view가 필요한 순간이 따로 있다.</p></article><article class="card coral"><span class="tag coral">Failure 03</span><h3>Attention switching cost</h3><p>세 영상을 항상 띄우면 정보는 늘지만 gaze transition, visual search, 화면 축소가 증가할 수 있다. “더 많은 view”와 “더 나은 view”는 다르다.</p></article></div>
+    <div class="verdict" style="margin-top:1rem"><strong>문제정의:</strong> 목표는 카메라 수를 늘리는 것이 아니라, 현재 작업 단계에서 필요한 시각 근거를 운영자가 놓치지 않도록 최소한의 화면 변화로 전달하는 것이다.</div>
+  </section>
+
+  <section class="section" id="mechanism"><div class="section-head"><div><p class="eyebrow">Mechanism</p><h2>gaze는 명령이 아니라 “검사 공백”의 측정값</h2></div><p>보조가 뜨려면 두 조건이 동시에 필요하다. 로봇이 위험한 상태에 가까워야 하고, 그 위험을 판단할 핵심 화면 영역이 최근에 충분히 관찰되지 않았어야 한다.</p></div>
+    <div class="viz"><img src="assets/img/system-loop.svg" alt="운영자 입력은 안전 제어기를 거쳐 xArm으로 가고 카메라와 Tobii 정보는 선택적 시점 보조에만 연결되는 Sightline-xArm 구조"><div class="caption">자체 제작 도해. gaze–robot 직접 연결을 구조적으로 차단하고 명시적 조작 입력을 유일한 운동 명령으로 둔다.</div></div>
+    <div class="grid two" style="margin-top:1rem"><article class="card teal"><h3>Risk score · 지금 위험한가?</h3><p>TCP–target 거리, 예상 접촉 시간, 속도, gripper–target 가림률, task phase를 결합한다. 초기 MVP는 설명 가능한 규칙 기반 점수로 시작한다.</p></article><article class="card teal"><h3>Inspection deficit · 필요한 곳을 봤는가?</h3><p>task graph가 정의한 target, contact surface, destination, robot-effector AOI 중 현재 단계의 필수 영역이 최근 시간창에서 관찰됐는지 본다. gaze 결측이면 보조를 보수적으로 제한한다.</p></article></div>
+    <div class="prose"><h3>개입 규칙의 최소 형태</h3><p><code>assist_t = risk_t ≥ τ_risk AND coverage_t(critical_AOI) &lt; τ_coverage</code></p><p>이 식은 사람의 마음을 추론하지 않는다. “안 봤으니 모른다”도 아니다. 다만 현재 화면에서 요구되는 시각적 검사 행동이 관찰되지 않았다는 제한된 사실만 사용한다. UI는 side/wrist thumbnail 확대나 테두리 강조만 수행하고, 실제 이동은 운영자가 다시 명령한다.</p></div>
+  </section>
+
+  <section class="section" id="gap"><div class="section-head"><div><p class="eyebrow">Research gap</p><h2>이미 존재하는 세 계열 사이의 좁은 공백</h2></div><p>gaze 기반 목표 선택, eye tracking을 이용한 workload 분석, 자동 카메라 시점은 각각 이미 연구되어 있다. 새 기여는 이들을 단순히 한 시스템에 넣는 데 있지 않다.</p></div>
+    <div class="viz"><img src="assets/img/gap-map.svg" alt="시선의 역할과 카메라 자동화 정도에 따라 선행연구와 Sightline-xArm을 배치한 연구 공백 지도"><div class="caption">제안의 위치: gaze는 수동 측정보다 한 단계 적극적이지만 직접 명령은 아니고, 카메라는 완전 자동 servo가 아니라 risk-gated 정보 제시다.</div></div>
+    <div class="grid three" style="margin-top:1rem"><article class="card flat"><h3>Gaze control과 다름</h3><p>GazeGrasp·GAMMA·shared autonomy는 gaze로 목표나 의도를 추정한다. Sightline은 target 선택과 robot command를 명시적 controller에 남긴다.</p></article><article class="card flat"><h3>Passive analytics와 다름</h3><p>SEEV·workload 연구는 gaze를 사후 분석한다. Sightline은 사전 정의된 제한 규칙으로 화면만 적응시키고 그 인과효과를 실험한다.</p></article><article class="card flat"><h3>Autonomous view와 다름</h3><p>기하 기반 카메라 연구는 가림을 최소화한다. Sightline은 geometry-only 조건을 강한 기준선으로 두고 “운영자가 이미 확인했는가”의 추가 가치를 분리한다.</p></article></div>
+    <div class="warning" style="margin-top:1rem"><strong>가장 가까운 2026년 결과:</strong> 단일·다중 카메라와 fixed/manual/autonomous control을 비교한 연구가 이미 다중뷰의 성공률 이득과 시각부하 비용을 보고했다. 따라서 단순한 “다중 카메라 xArm UI”는 새 주제가 아니다. gaze-contingent 조건이 geometry-only보다 객관적 오류와 view 전환을 개선해야만 기여가 성립한다.</div>
+  </section>
+
+  <section class="section" id="contribution"><div class="section-head"><div><p class="eyebrow">Candidate contributions</p><h2>검증되었을 때만 주장할 네 가지</h2></div><p>현재는 연구 제안이다. 아래 항목은 사전등록한 비교와 ablation에서 지지될 때만 논문 기여로 승격한다.</p></div>
+    <div class="grid four"><article class="card teal"><span class="tag teal">C1</span><h3>Risk × coverage trigger</h3><p>기하 위험과 task-critical AOI 미검사를 결합한, 직접 명령이 아닌 선택적 view-assistance 규칙.</p></article><article class="card teal"><span class="tag teal">C2</span><h3>Physical xArm study</h3><p>시뮬레이션만이 아니라 제한된 실제 xArm 작업에서 네 UI 조건을 within-subject로 비교.</p></article><article class="card teal"><span class="tag teal">C3</span><h3>Sightline Episodes</h3><p>gaze–UI–camera–robot telemetry–fault를 밀리초 단위로 연결한 재현 가능한 HRI 데이터 schema.</p></article><article class="card teal"><span class="tag teal">C4</span><h3>Boundary evidence</h3><p>어떤 가림·숙련도·gaze 품질에서 적응형 보조가 도움 또는 방해가 되는지 경계 조건 보고.</p></article></div>
+    <div class="danger" style="margin-top:1rem"><strong>반증 조건:</strong> C3가 C2보다 task error, view switching, selective workload 중 어느 것도 개선하지 못하거나 camera churn·놀람 비용을 키우면 “gaze 기반 적응”을 기여로 주장하지 않는다. 그 경우 동기화 데이터셋과 부정 결과, UI 설계 지침으로 범위를 낮춘다.</div>
+  </section>
+
+  <section class="section" id="decision"><div class="section-head"><div><p class="eyebrow">Feasibility decision</p><h2>연구 가치는 높지만 세 Gate가 먼저</h2></div><p>xArm과 screen-based Tobii라는 장비 조합에는 잘 맞는다. 다만 장치·라이선스·안전 조건을 확인하지 않은 채 인간대상 수집을 시작하면 안 된다.</p></div>
+    <div class="grid two"><article class="card"><div class="tag-row"><span class="tag teal">권고 · 조건부 진행</span></div><div class="grid four"><div><div class="metric">4.5</div><div class="label">주제 명료성 / 5</div></div><div><div class="metric">4.2</div><div class="label">연구 차별성 / 5</div></div><div><div class="metric">4.3</div><div class="label">실물 시연 / 5</div></div><div><div class="metric">2.6</div><div class="label">현재 준비 / 5</div></div></div><p>VLA 없이도 HRI·human factors·teleoperation 문제로 완결된다. camera UI가 화면에 드러나므로 시연도 쉽다.</p></article><article class="card"><h3>착수 전 필수 확인</h3><ul><li>보유 Tobii의 정확한 SKU와 Analytical Use 권한</li><li>실제 xArm 모델, gripper, 사용 가능한 control mode</li><li>overhead/side/wrist 카메라와 시간 동기화 가능성</li><li>IRB/윤리 검토, 동의·보관·폐기 정책</li><li>물리 E-stop, barrier, 저속 workspace 검증</li></ul></article></div>
+    <div class="card-actions"><a class="button teal" href="study/index.html">실험 설계 전체 보기</a><a class="button secondary" href="foundations/index.html">배경 개념부터 읽기</a><a class="button secondary" href="evidence/related-work.html">선행연구 공백 검토</a></div>
+  </section>
+</main>
+<footer class="site-footer"><div class="footer-inner"><span>Sightline-xArm · independent xArm × Tobii study</span><span>검증 전 연구 제안 · 안전 인증 아님 · <span data-year></span></span></div></footer>
+<script src="assets/js/site.js"></script>
+</body></html>
