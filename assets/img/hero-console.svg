@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" role="img" aria-labelledby="title desc">
+  <title id="title">Sightline selective-view teleoperation console</title>
+  <desc id="desc">A main overhead camera and selectively enlarged side camera support explicit xArm teleoperation while Tobii gaze remains outside the motion command path.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0b5360"/><stop offset="1" stop-color="#13283f"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="24" stdDeviation="24" flood-color="#061725" flood-opacity=".3"/></filter>
+  </defs>
+  <rect width="1440" height="900" rx="48" fill="url(#bg)"/>
+  <circle cx="1280" cy="120" r="300" fill="#d85f45" opacity=".14"/><circle cx="120" cy="820" r="320" fill="#16a4ad" opacity=".17"/>
+  <g filter="url(#shadow)">
+    <rect x="72" y="66" width="1296" height="768" rx="30" fill="#f7faf9"/>
+    <rect x="72" y="66" width="1296" height="74" rx="30" fill="#10283d"/>
+    <circle cx="114" cy="103" r="8" fill="#fe6b64"/><circle cx="141" cy="103" r="8" fill="#ffc95b"/><circle cx="168" cy="103" r="8" fill="#52d39a"/>
+    <text x="224" y="112" fill="#d8e9ec" font-family="Inter,Segoe UI,sans-serif" font-size="24" font-weight="800">SELECTIVE VIEW ASSIST · TRIAL 031</text>
+    <rect x="106" y="173" width="790" height="490" rx="22" fill="#c9d6d7"/>
+    <rect x="106" y="173" width="790" height="58" rx="22" fill="#fff"/>
+    <text x="139" y="210" fill="#13283f" font-family="Inter,Segoe UI,sans-serif" font-size="20" font-weight="900">MAIN · OVERHEAD</text>
+    <rect x="136" y="262" width="730" height="367" rx="18" fill="#b5c8c8"/>
+    <rect x="231" y="338" width="486" height="202" rx="20" fill="#dce4de" stroke="#8d9d93" stroke-width="5"/>
+    <rect x="445" y="407" width="112" height="86" rx="16" fill="#e4a853"/>
+    <g stroke="#516879" stroke-width="27" stroke-linecap="round" fill="none"><path d="M293 294l85 74 76 18"/><path d="M454 386l31 39"/></g>
+    <g fill="#294a62"><circle cx="293" cy="294" r="23"/><circle cx="378" cy="368" r="23"/><circle cx="454" cy="386" r="23"/><rect x="458" y="416" width="56" height="27" rx="8" transform="rotate(18 486 429)"/></g>
+    <rect x="426" y="390" width="150" height="118" rx="18" fill="none" stroke="#d85f45" stroke-width="7" stroke-dasharray="13 10"/>
+    <text x="435" y="379" fill="#b94731" font-family="Inter,Segoe UI,sans-serif" font-size="18" font-weight="900">CONTACT EDGE OCCLUDED</text>
+    <rect x="922" y="173" width="414" height="286" rx="22" fill="#10283d"/>
+    <rect x="946" y="198" width="366" height="205" rx="16" fill="#bfd0d2"/>
+    <rect x="1005" y="327" width="240" height="30" rx="8" fill="#dce4de"/>
+    <rect x="1086" y="285" width="96" height="64" rx="13" fill="#e4a853"/>
+    <g stroke="#516879" stroke-width="24" stroke-linecap="round" fill="none"><path d="M1012 225l78 56 43 20"/></g>
+    <g fill="#294a62"><circle cx="1012" cy="225" r="20"/><circle cx="1090" cy="281" r="20"/><rect x="1116" y="286" width="62" height="24" rx="8"/></g>
+    <path d="M1070 354h129" stroke="#d85f45" stroke-width="6"/><text x="946" y="435" fill="#fff" font-family="Inter,Segoe UI,sans-serif" font-size="18" font-weight="900">AUXILIARY · SIDE · ENLARGED</text>
+    <g fill="none" stroke="#08a0aa" stroke-width="5"><circle cx="1116" cy="344" r="31"/><circle cx="1116" cy="344" r="9"/></g>
+    <rect x="922" y="486" width="414" height="177" rx="22" fill="#fff" stroke="#d7e0e2" stroke-width="2"/>
+    <text x="952" y="526" fill="#5e6d7b" font-family="Inter,Segoe UI,sans-serif" font-size="15" font-weight="900">ASSIST ELIGIBILITY</text>
+    <rect x="952" y="550" width="162" height="58" rx="13" fill="#fae7e1"/><text x="975" y="574" fill="#a14430" font-family="Inter,Segoe UI,sans-serif" font-size="14" font-weight="900">GEOMETRIC RISK</text><text x="975" y="595" fill="#a14430" font-family="Inter,Segoe UI,sans-serif" font-size="20" font-weight="900">HIGH</text>
+    <rect x="1130" y="550" width="176" height="58" rx="13" fill="#dff2f2"/><text x="1150" y="574" fill="#087e8b" font-family="Inter,Segoe UI,sans-serif" font-size="14" font-weight="900">INSPECTION EVIDENCE</text><text x="1150" y="595" fill="#087e8b" font-family="Inter,Segoe UI,sans-serif" font-size="20" font-weight="900">MISSING</text>
+    <rect x="106" y="696" width="1230" height="104" rx="22" fill="#fff" stroke="#d7e0e2" stroke-width="2"/>
+    <text x="140" y="739" fill="#5e6d7b" font-family="Inter,Segoe UI,sans-serif" font-size="15" font-weight="900">TWO SEPARATE PATHS</text>
+    <rect x="140" y="755" width="330" height="15" rx="7" fill="#cdd9dc"/><rect x="140" y="755" width="220" height="15" rx="7" fill="#087e8b"/>
+    <text x="493" y="771" fill="#087e8b" font-family="Inter,Segoe UI,sans-serif" font-size="16" font-weight="900">GAZE → DISPLAY ONLY</text>
+    <path d="M704 746h100" stroke="#7f929e" stroke-width="4"/><path d="M804 746l-18-12v24z" fill="#7f929e"/>
+    <rect x="828" y="720" width="204" height="56" rx="13" fill="#13283f"/><text x="855" y="755" fill="#fff" font-family="Inter,Segoe UI,sans-serif" font-size="17" font-weight="900">EXPLICIT CONTROLLER</text>
+    <path d="M1048 748h76" stroke="#7f929e" stroke-width="4"/><path d="M1124 748l-18-12v24z" fill="#7f929e"/>
+    <rect x="1148" y="720" width="158" height="56" rx="13" fill="#fae7e1"/><text x="1191" y="755" fill="#a14430" font-family="Inter,Segoe UI,sans-serif" font-size="17" font-weight="900">xARM</text>
+  </g>
+</svg>
