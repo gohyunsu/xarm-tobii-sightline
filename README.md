@@ -22,6 +22,7 @@ The decisive comparison is **C3 Sightline versus C2 geometry-only**. If C3 does 
 - `foundations/` — teleoperation, xArm, camera geometry, eye tracking, gaze measures, AOIs, adaptive-interface risks
 - `study/` — research questions, C0–C3 conditions, physical tasks, outcomes, power, analysis, validity
 - `system/` — rig, software authority, risk/coverage, synchronization, Sightline Episodes, privacy, safety
+- `methods/math.html` — TeX specification of gaze uncertainty, coverage, risk, trigger FSM, synchronization, and causal estimands
 - `evidence/related-work.html` — claim-by-claim literature map with interactive filters
 - `evidence/media.html` — official videos/images, prior-work figures, and eleven original diagrams with provenance
 - `operations/roadmap.html` — readiness status, six go/no-go gates, 12-week path, equipment, roles, risks
