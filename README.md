@@ -4,6 +4,12 @@ Sightline-xArm은 xArm 화면 기반 원격조작에서 Tobii gaze를 **robot co
 
 이 프로젝트는 VLA와 BEAVER에 의존하지 않는다.
 
+## 공개 사이트
+
+<https://gohyunsu.github.io/xarm-tobii-sightline/>
+
+`main` 브랜치에 변경사항이 push되면 GitHub Actions가 정적 사이트를 GitHub Pages로 자동 배포한다.
+
 ## 핵심 질문
 
 > 가려진 물체를 xArm으로 집어 옮기는 화면 기반 원격조작에서, 운영자가 아직 확인하지 않은 접촉 영역과 로봇의 기하학적 위험을 결합해 필요한 보조 시점만 제시하면, 수동 전환·항상 켜진 다중뷰·기하 기반 자동뷰보다 조작 오류와 시각적 전환 비용을 줄일 수 있는가?
