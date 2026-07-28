@@ -1,68 +1,90 @@
-# Sightline-xArm related-work ledger
+# Related Work Notes
 
-Last checked: 23 July 2026
+This file is a compact, persistent complement to the interactive evidence map. Check source revisions before a paper submission.
 
-## Core judgment
+## Closest gaze-conditioned VLA
 
-The gap is not the hardware combination “xArm + Tobii.” Gaze-based robot control, passive gaze analysis, geometry-based adaptive viewpoints, and multi-camera human-factors studies already exist. Sightline’s candidate contribution is a non-command closed loop that presents an auxiliary view only when geometry is risky and task-critical screen inspection evidence is deficient, evaluated directly against a matched geometry-only policy on a physical xArm.
+- **Gaze2Act (Zuo et al., May 2026):** cross-view semantic grounding of first-person gaze to the robot view; perception-level contours/heatmaps; action-level conditioning; real Unitree G1 evaluation covering near-identical, unseen, transparent, compositional, subpart, part-conditioned, and dynamic-intent tasks. This is the nearest work and removes any “first gaze-conditioned VLA” claim.
+  <https://zuo-kuangji.github.io/Gaze2Act/>
+  <https://arxiv.org/abs/2605.30282>
 
-## Literature families and design consequences
+- **Gaze-Regularized VLA (Pani and Yang, March 2026):** trains VLA attention to match gaze-like heatmaps without eye tracking at inference. Relevant to gaze supervision, not live referent input. Verify artifacts and review status.
+  <https://arxiv.org/abs/2603.23202>
 
-| Family | Representative work | Established result or capability | Consequence for Sightline |
-|---|---|---|---|
-| Multi-camera ergonomics | [Operational performance, cognitive load, visual attention, and usability… (Applied Ergonomics, 2026)](https://www.sciencedirect.com/science/article/pii/S0003687025001838) | Compares performance, cognitive load, visual attention, and usability across camera modes | Always-on multiview is a strong baseline; measure transition and workload cost |
-| Adaptive viewpoint | [Rakita et al., RSS 2019](https://graphics.cs.wisc.edu/Papers/2019/RMG19a/) | Optimizes viewpoint around task geometry and occlusion | Geometry-only C2 is mandatory; C3−C2 isolates gaze |
-| Camera mapping | [Resolving Camera Frame Misalignment (2021)](https://arxiv.org/abs/2105.08466) | Shows performance cost from camera/control frame misalignment | Keep camera mapping, gain, and layout matched across conditions |
-| Gaze intention | [Fuchs & Belardinelli, 2021](https://www.frontiersin.org/journals/neurorobotics/articles/10.3389/fnbot.2021.647930/full) | Estimates pick-and-place intention from gaze in simulation | Model gaze uncertainty and sequence; never equate gaze with intent |
-| Visual-attention theory | [SEEV in HRI (2024)](https://onlinelibrary.wiley.com/doi/abs/10.1002/hfm.21017) | Explains allocation through salience, effort, expectancy, and value | Include task value and view-switch effort in AOI and outcome design |
-| Multi-view gaze analysis | [Gaze tracking in multi-view teleoperation](https://pmc.ncbi.nlm.nih.gov/articles/PMC8521448/) | Characterizes gaze behavior across teleoperation views | Sightline must add online causal assistance, not only passive logging |
-| Direct camera control | [Gaze-contingent Cartesian camera control](https://pmc.ncbi.nlm.nih.gov/articles/PMC3988881/) | Directly controls a robotic camera using gaze | Gaze-camera servo is not a novel or desired contribution |
-| Assistive gaze arms | [Scoping review (2024)](https://pmc.ncbi.nlm.nih.gov/articles/PMC10909843/) | Maps gaze-control approaches for assistive robot arms | Restrict gaze to inspection evidence rather than target/action command |
-| Goal prediction | [Gaze Complements Control Input, RSS 2022](https://www.ri.cmu.edu/app/uploads/2022/05/aronson_gaze_to_goal_rss22_camera_ready.pdf) | Shows gaze can complement control input for goal prediction | Test incremental value over robot/geometry variables through ablation |
-| Recent gaze manipulation | [GazeGrasp (2025)](https://arxiv.org/abs/2501.07255), [GAMMA (2026)](https://arxiv.org/abs/2601.05336) | Uses gaze for target or manipulation assistance | Keep claims distinct from gaze-conditioned action and recheck nearest neighbors |
-| Robot platform | [xarm_ros2](https://github.com/xArm-Developer/xarm_ros2) | Provides ROS 2, MoveIt, and camera-calibration examples | Supports implementation feasibility; example calibration is not experimental calibration |
-| Eye-tracker access | [Tobii Pro SDK](https://developer.tobii.com/tobii-pro-sdk/), [SDLA](https://developer.tobii.com/pc-gaming/sdla/) | Defines access paths and analytical-use constraints | License confirmation is a research-start gate |
+## Gaze-guided robot interfaces
 
-## Nearest-neighbor test
+- **GAMMA / Intent at a Glance (Tay et al., January 2026):** egocentric gaze plus a VLM for intent inference and modular autonomous manipulation. Near neighbor for foundation-model-assisted skill selection.
+  <https://arxiv.org/abs/2601.05336>
 
-Sightline remains differentiated only if all of the following are true:
+- **GazeGrasp (2025):** wearable eye gaze, object detection, and robotic grasping. Supports a classical gaze-to-object baseline and calibration/fixation analysis.
+  <https://arxiv.org/abs/2501.07255>
 
-1. Gaze changes presentation, not robot or camera motion authority.
-2. The trigger is task-phase-specific inspection evidence, not generic dwell or saliency.
-3. Geometry-only adaptation uses the same risk model, stream, cue style, and display location.
-4. The experiment isolates C3−C2 on physical manipulation outcomes and automation cost.
-5. Gaze quality, missingness, cue timing, and event precedence are reported.
+- **Eye-Tracking-Driven Control in Daily Task Assistance (Fischer-Janzen et al., 2026):** assistive object/task selection, 3D gaze accuracy issues, and practical lessons.
+  <https://arxiv.org/abs/2601.17404>
 
-If any condition is removed, the work may collapse into established gaze control, passive analytics, or adaptive-viewpoint research.
+## VLA and adaptation
 
-## Claim-to-evidence requirements
+- **RT-1:** large-scale language-conditioned real-world robot learning.
+  <https://arxiv.org/abs/2212.06817>
 
-| Candidate claim | Minimum comparison and evidence |
-|---|---|
-| “Selective views improve on always-on multiview” | C2/C3 versus C1; task-success non-inferiority plus lower transition/workload cost |
-| “Gaze adds value” | C3−C2 with matched risk, cue, layout, stream, and timing |
-| “The interface reduces errors” | Blinded contact/drop/deviation scoring and mixed-effects analysis across people and scenes |
-| “The trigger measures inspection” | Valid calibration, uncertainty-aware AOIs, temporal precedence, and convergent task evidence |
-| “Workload is lower” | NASA-TLX together with view/gaze transitions and automation-event counts |
-| “The system is safe” | Not a claim supported by this study; maintain an independent physical safety case |
+- **RT-2:** vision-language model co-fine-tuned to output robot actions as tokens; establishes the VLA formulation.
+  <https://robotics-transformer2.github.io/>
 
-## Primary threats from the literature
+- **OpenVLA:** open 7B VLA pretrained on 970k Open X-Embodiment episodes; official custom-data, LoRA, evaluation, and server paths. Primary candidate base model.
+  <https://openvla.github.io/>
+  <https://github.com/openvla/openvla>
 
-- **Novelty threat:** geometry-only adaptation may explain all benefit.
-- **Construct threat:** center bias or task layout may masquerade as inspection coverage.
-- **Causal threat:** the cue itself captures gaze and changes subsequent measurement.
-- **Transfer threat:** simulator or single-scene effects may not survive physical variation.
-- **Usability threat:** automatic view changes may disrupt spatial memory more than they help.
-- **Licensing threat:** access to a consumer tracker does not imply analytical-use permission.
+- **OpenVLA-OFT:** optimized adaptation with continuous action prediction, action chunks, faster inference, and multi-image support. Preferred candidate when its action contract and compute fit xArm.
+  <https://openvla-oft.github.io/>
 
-## Ongoing search axes
+- **Diffusion Policy:** strong narrow-domain imitation-learning baseline. Important because OpenVLA does not automatically outperform a focused policy on precise single-task manipulation.
+  <https://diffusion-policy.cs.columbia.edu/>
 
-- gaze-aware adaptive viewpoints and selective camera presentation;
-- multi-camera teleoperation with eye tracking;
-- physical-manipulator gaze assistance with geometry-only ablation;
-- AOI uncertainty and dynamic screen-layout methods;
-- automation surprise, mode confusion, and view-switch cost;
-- current Tobii analytical-use and SDK conditions;
-- xArm teleoperation safety, calibration, and synchronization practice.
+- **Octo:** open generalist robot policy and alternative transferable-policy baseline.
+  <https://octo-models.github.io/>
 
-For every added paper, record task, physical versus simulation setting, robot, camera condition, sample size, gaze role, authority path, outcome, limitation, and its exact consequence for Sightline.
+## Robot data
+
+- **Open X-Embodiment:** 1M+ trajectories, 22 embodiments, 60 pooled datasets, and standardized action/data representation. Motivates RLDS and embodiment-aware normalization.
+  <https://robotics-transformer-x.github.io/>
+
+- **DROID:** large-scale in-the-wild real-robot manipulation data with consistent collection infrastructure and diverse views/scenes. Informs episode design and quality control.
+  <https://droid-dataset.github.io/>
+
+## Candidate grounding
+
+- **OWL-ViT:** open-vocabulary text-conditioned object detection.
+  <https://arxiv.org/abs/2205.06230>
+
+- **Grounding DINO:** open-set language-grounded object detection.
+  <https://arxiv.org/abs/2303.05499>
+
+- **Segment Anything:** promptable segmentation for candidate masks/AOIs.
+  <https://segment-anything.com/>
+
+These methods generate candidates or masks. They do not by themselves establish which object the operator intends.
+
+## Calibration and abstention
+
+- **On Calibration of Modern Neural Networks (Guo et al., 2017):** reliability diagrams, expected calibration error, and temperature scaling.
+  <https://proceedings.mlr.press/v70/guo17a.html>
+
+- **Selective Classification for Deep Neural Networks (Geifman and El-Yaniv, 2017):** reject-option evaluation and risk–coverage trade-offs.
+  <https://arxiv.org/abs/1705.08500>
+
+## Platform
+
+- **xarm_ros2:** official UFACTORY ROS 2 packages for xArm, MoveIt, simulation, grippers, and camera examples.
+  <https://github.com/xArm-Developer/xarm_ros2>
+
+## Candidate research gap
+
+The most defensible gap is not gaze-conditioned VLA itself. It is the empirical combination of:
+
+1. screen-based Tobii gaze mapped into the exact robot-camera render with calibrated uncertainty;
+2. selective referent inference with top-two ambiguity, abstention, and confirmation;
+3. an explicit classical gaze baseline that tests whether VLA is necessary;
+4. a frozen-versus-xArm-adapted VLA comparison on held-out physical trials;
+5. reliability and boundary analysis rather than only successful rollouts.
+
+This remains a candidate gap until the complete Gaze2Act paper/code and other contemporaneous 2026 work are audited at submission time.

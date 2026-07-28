@@ -1,38 +1,46 @@
-# Sightline-xArm
+# GazePick
 
-Sightline-xArm is an independent HRI research atlas for **gaze-informed selective camera assistance** during screen-based xArm teleoperation. Tobii gaze is treated as limited inspection evidence, never as a robot command.
+GazePick is a research and implementation atlas for an **uncertainty-aware, gaze–language-conditioned VLA pick-and-place system on xArm**.
 
-The project does not depend on VLA or BEAVER.
+The operator looks at a target object in the robot-camera view and names the destination. Tobii gaze provides a probabilistic referent cue; language specifies the task and destination; a vision-language-action policy proposes the behavior; an independently guarded xArm layer validates and executes it. Ambiguous intent must lead to abstention or explicit confirmation, not a guess.
 
 ## Public site
 
-<https://gohyunsu.github.io/xarm-tobii-sightline/>
+<https://gohyunsu.github.io/gazepick-xarm/>
 
 Every push to `main` deploys the static site through GitHub Actions and GitHub Pages.
 
 ## Exact research question
 
-> During screen-based xArm teleoperation of occluded pick-and-place tasks, can an auxiliary view triggered by the combination of geometric risk and missing inspection of a critical region reduce manipulation errors and visual-switching cost relative to manual switching, persistent multiview, and geometry-only assistance?
+> In cluttered scenes containing similar objects, does uncertainty-aware fusion of screen-based Tobii gaze and language reduce target-selection time and wrong-object picks on a physical xArm, compared with language-only and classical gaze-to-object interfaces—and does xArm-specific VLA adaptation add value beyond gaze prompting alone?
 
-The decisive comparison is **C3 Sightline versus C2 geometry-only**. If C3 does not improve a prespecified physical or visual-cost outcome over C2, the project does not claim incremental value from gaze.
+## What each component means
 
-## Site structure
+- **Tobii:** measures where the operator is likely looking on the displayed robot-camera image. It narrows the referent; it never directly commands motion.
+- **Language:** states the manipulation goal and destination, such as “put it in the blue bin.”
+- **Grounding:** maps a noisy gaze distribution and language evidence to probabilities over candidate source objects.
+- **VLA:** converts the visual scene, instruction, and gaze representation into an action proposal.
+- **Guarded xArm layer:** checks workspace, speed, gripper, confidence, confirmation, and fault state before execution.
 
-- `index.html` — exact proposition, concrete scenario, mechanism, gap, conditional contribution
-- `foundations/` — teleoperation, xArm, camera geometry, eye tracking, gaze measures, AOIs, adaptive-interface risks
-- `study/` — research questions, C0–C3 conditions, physical tasks, outcomes, power, analysis, validity
-- `system/` — rig, software authority, risk/coverage, synchronization, Sightline Episodes, privacy, safety
-- `methods/math.html` — TeX specification of gaze uncertainty, coverage, risk, trigger FSM, synchronization, and causal estimands
-- `evidence/related-work.html` — claim-by-claim literature map with interactive filters
-- `evidence/media.html` — official videos/images, prior-work figures, and eleven original diagrams with provenance
-- `operations/roadmap.html` — readiness status, six go/no-go gates, 12-week path, equipment, roles, risks
-- `docs/RESEARCH_CONTEXT.md` — persistent project context for later development
+## Site map
 
-## Original visualizations
+- `index.html` — research brief, scenario, question, contribution, and success criteria
+- `foundations/` — beginner-friendly concepts: pick-and-place, gaze measurement, referring expressions, VLA, uncertainty, and safety
+- `interaction/` — one complete human–robot episode, interface states, confirmation, and failure recovery
+- `system/` — hardware/software architecture, coordinate transforms, object grounding, xArm execution, timing, and safety
+- `methods/data.html` — episode schema, demonstration collection, VLA integration ladder, LoRA/OFT plan, and rigorous mathematical specification
+- `study/` — baselines, factors, splits, metrics, hypotheses, analysis, and refutation rules
+- `evidence/related-work.html` — searchable primary-source evidence map and explicit novelty boundary
+- `operations/roadmap.html` — July–November execution plan, workstreams, decision log, study curriculum, risks, and definition of done
 
-The repository includes eleven SVG diagrams covering the concrete decision window, visual-failure taxonomy, authority boundary, gaze construct ladder, experimental conditions, trial timing, physical rig, synchronized schema, analysis model, research gates, and literature gap.
+## Research position
 
-They are proposal schematics, not collected results.
+Gaze-conditioned VLA control is not itself novel: Gaze2Act demonstrated object-, part-, and dynamic-intent conditioning on a real Unitree G1 in 2026. GazePick therefore tests a narrower, falsifiable contribution:
+
+1. calibrated **screen-to-camera gaze uncertainty** for an xArm workcell;
+2. **probabilistic grounding with abstention and confirmation** under similar-object ambiguity;
+3. a physical comparison of language-only, classical gaze snapping, gaze prompting, and xArm-adapted VLA conditions;
+4. an auditable xArm episode dataset and evidence about when lightweight adaptation is—or is not—worthwhile.
 
 ## Local preview
 
@@ -40,14 +48,14 @@ They are proposal schematics, not collected results.
 python3 -m http.server 8877 --bind 127.0.0.1
 ```
 
-Then open <http://127.0.0.1:8877/>. Remotely embedded manufacturer and publication media require network access; all core logic remains available in local text and SVGs.
+Open <http://127.0.0.1:8877/>. External publication and manufacturer media require network access; every core explanation remains available as text and original SVG diagrams.
 
-## Current status
+## Status
 
-This release is an **implementable research specification**, not a validated xArm/Tobii system and not a human-study result. Human gaze collection is gated by exact hardware inventory, analytical-use rights, end-to-end synchronization, independent robot safety controls, task validity, and institutional ethics determination.
+This repository is an implementation-ready research specification, not a completed experiment or certified industrial safety system. Claims are conditional on physical xArm evaluation.
 
 ## Licensing
 
 - Code: [MIT](LICENSE)
-- Original documentation and SVGs: [CC BY 4.0](CONTENT_LICENSE.md)
-- External images and videos: owned by their original sources; see [media provenance](docs/MEDIA_PROVENANCE.md)
+- Original documentation and diagrams: [CC BY 4.0](CONTENT_LICENSE.md)
+- External media: retained by original owners and linked with provenance in `docs/MEDIA_PROVENANCE.md`
