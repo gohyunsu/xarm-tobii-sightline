@@ -21,6 +21,21 @@ External images and videos are embedded from their original hosts and remain own
 - OpenVLA-OFT overview image: <https://openvla-oft.github.io/static/images/openvla_oft_figure_1.jpeg>
 - Used on: overview and foundations pages.
 
+## RT-2
+
+- Project: <https://robotics-transformer2.github.io/>
+- Video: <https://robotics-transformer2.github.io/videos/rt2_teaser.mp4>
+- Poster: <https://robotics-transformer2.github.io/img/teaser4.jpg>
+- Used on: foundations page.
+
+## Open X-Embodiment
+
+- Project: <https://robotics-transformer-x.github.io/>
+- Video: <https://robotics-transformer-x.github.io/video/teaser_compressed.mp4>
+- Overview/poster: <https://robotics-transformer-x.github.io/img/overview.png>
+- Dataset composition figure: <https://robotics-transformer-x.github.io/img/data.png>
+- Used on: data and adaptation page.
+
 ## Tobii
 
 - How eye trackers work: <https://www.tobii.com/resource-center/learn-articles/how-do-eye-trackers-work>
@@ -62,3 +77,6 @@ All SVG files in `assets/img/` are original explanatory diagrams created for thi
 - `contribution-gap.svg`
 - `safety-state.svg`
 - `project-timeline.svg`
+- `concept-journey.svg`
+- `coordinate-stack.svg`
+- `evidence-tree.svg`
