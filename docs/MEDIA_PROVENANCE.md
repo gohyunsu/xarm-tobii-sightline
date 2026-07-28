@@ -65,7 +65,7 @@ External images and videos are embedded from their original hosts and remain own
 
 ## Original diagrams
 
-All SVG files in `assets/img/` are original explanatory diagrams created for this repository. They are conceptual schematics, not collected results:
+The research SVG diagrams in `assets/img/` are original explanatory diagrams created for this repository. They are conceptual schematics, not collected results:
 
 - `hero-flow.svg`
 - `signal-roles.svg`
@@ -80,3 +80,7 @@ All SVG files in `assets/img/` are original explanatory diagrams created for thi
 - `concept-journey.svg`
 - `coordinate-stack.svg`
 - `evidence-tree.svg`
+
+## Original brand asset
+
+- `favicon.svg` — original GazePick browser icon.
