@@ -6,7 +6,7 @@ The operator looks at a target object in the robot-camera view and names the des
 
 ## Public site
 
-<https://gohyunsu.github.io/gazepick-xarm/>
+<https://gohyunsu.github.io/gazepick/>
 
 Every push to `main` deploys the static site through GitHub Actions and GitHub Pages.
 

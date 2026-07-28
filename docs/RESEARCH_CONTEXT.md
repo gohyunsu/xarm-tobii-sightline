@@ -3,7 +3,7 @@
 ## Stable project identity
 
 **Short name:** GazePick
-**Repository name:** `gazepick-xarm`
+**Repository name:** `gazepick`
 **Technical subtitle:** Uncertainty-aware gaze–language VLA pick-and-place on xArm
 
 ## Final application topic
