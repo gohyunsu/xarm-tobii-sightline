@@ -1,5 +1,3 @@
-document.body.classList.add('js-ready');
-
 const navToggle = document.querySelector('.nav-toggle');
 const navLinks = document.querySelector('.nav-links');
 
@@ -40,23 +38,16 @@ document.querySelectorAll('[data-reading-time]').forEach((node) => {
   node.textContent = Math.max(1, Math.ceil(words / 220)) + ' min read';
 });
 
-const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const revealTargets = [...document.querySelectorAll('.hero, main > .section')];
-if ('IntersectionObserver' in window && !reduceMotion) {
-  revealTargets.forEach((node) => node.classList.add('reveal'));
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
-  revealTargets.forEach((node, index) => {
-    if (index === 0) node.classList.add('is-visible');
-    else observer.observe(node);
-  });
-}
+document.querySelectorAll('table').forEach((table) => {
+  if (table.parentElement?.classList.contains('table-scroll')) return;
+  const wrapper = document.createElement('div');
+  wrapper.className = 'table-scroll';
+  wrapper.tabIndex = 0;
+  wrapper.setAttribute('role', 'region');
+  wrapper.setAttribute('aria-label', 'Scrollable data table');
+  table.parentNode?.insertBefore(wrapper, table);
+  wrapper.append(table);
+});
 
 const search = document.querySelector('[data-paper-search]');
 const family = document.querySelector('[data-paper-family]');
