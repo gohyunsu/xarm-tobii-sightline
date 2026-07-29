@@ -9,7 +9,7 @@ External images and videos are embedded from their original hosts and remain own
 - Teaser/poster: <https://zuo-kuangji.github.io/Gaze2Act/images/teaser.png>
 - Method figure: <https://zuo-kuangji.github.io/Gaze2Act/figures/method.png?v=pdf>
 - Attention figure: <https://zuo-kuangji.github.io/Gaze2Act/figures/attention-cropped.png>
-- Used on: overview, interaction, and related-work pages.
+- Used on: overview, research-direction, interaction, and related-work pages.
 
 ## OpenVLA and OpenVLA-OFT
 
@@ -19,7 +19,7 @@ External images and videos are embedded from their original hosts and remain own
 - OpenVLA model figure: <https://openvla.github.io/static/images/openvla_model.jpg>
 - OpenVLA-OFT project: <https://openvla-oft.github.io/>
 - OpenVLA-OFT overview image: <https://openvla-oft.github.io/static/images/openvla_oft_figure_1.jpeg>
-- Used on: overview and foundations pages.
+- Used on: overview, research-direction, and foundations pages.
 
 ## RT-2
 
@@ -73,13 +73,14 @@ The research SVG diagrams in `assets/img/` are original explanatory diagrams cre
 - `system-architecture.svg`
 - `adaptation-ladder.svg`
 - `episode-schema.svg`
-- `benchmark-matrix.svg`
 - `contribution-gap.svg`
 - `safety-state.svg`
 - `project-timeline.svg`
 - `concept-journey.svg`
 - `coordinate-stack.svg`
 - `evidence-tree.svg`
+- `research-spine.svg`
+- `experiment-axes.svg`
 
 ## Original brand asset
 

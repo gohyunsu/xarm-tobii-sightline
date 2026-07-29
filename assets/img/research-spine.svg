@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 650" role="img" aria-labelledby="title desc">
+  <title id="title">GazePick research spine</title>
+  <desc id="desc">The core study moves from an ambiguous scene to multimodal evidence, a selective referent decision, guarded execution, and interpretable evidence. VLA comparison is a conditional second stage.</desc>
+  <defs>
+    <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#10283a"/><stop offset="1" stop-color="#0a5c61"/></linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="8" stdDeviation="12" flood-opacity=".16"/></filter>
+  </defs>
+  <rect width="1180" height="650" rx="30" fill="url(#bg)"/>
+  <g font-family="system-ui">
+    <text x="56" y="58" fill="#9edbd8" font-size="15" font-weight="800" letter-spacing="2.5">THE RESEARCH SPINE</text>
+    <text x="56" y="94" fill="#ffffff" font-size="25" font-weight="800">Prove the reference decision before optimizing the action policy.</text>
+
+    <g transform="translate(56 145)">
+      <g transform="translate(0 0)">
+        <rect width="194" height="178" rx="20" fill="#ffffff" filter="url(#shadow)"/>
+        <text x="20" y="32" fill="#087c82" font-size="12" font-weight="850" letter-spacing="1.2">01 · PROBLEM</text>
+        <text x="20" y="68" fill="#17364c" font-size="20" font-weight="820">Ambiguous scene</text>
+        <text x="20" y="104" fill="#5c7180" font-size="14">Several candidates satisfy</text>
+        <text x="20" y="127" fill="#5c7180" font-size="14">the spoken description.</text>
+        <text x="20" y="153" fill="#9a4b38" font-size="13" font-weight="750">Wrong choice has a cost.</text>
+      </g>
+      <path d="M204 89h32" stroke="#8fd3d0" stroke-width="3" stroke-linecap="round"/>
+      <path d="m227 79 11 10-11 10" fill="none" stroke="#8fd3d0" stroke-width="3"/>
+
+      <g transform="translate(246 0)">
+        <rect width="194" height="178" rx="20" fill="#ffffff" filter="url(#shadow)"/>
+        <text x="20" y="32" fill="#087c82" font-size="12" font-weight="850" letter-spacing="1.2">02 · EVIDENCE</text>
+        <text x="20" y="68" fill="#17364c" font-size="20" font-weight="820">Gaze + language</text>
+        <text x="20" y="104" fill="#5c7180" font-size="14">Gaze narrows “which.”</text>
+        <text x="20" y="127" fill="#5c7180" font-size="14">Language defines the task.</text>
+        <text x="20" y="153" fill="#5c7180" font-size="13">Both remain imperfect signals.</text>
+      </g>
+      <path d="M450 89h32" stroke="#8fd3d0" stroke-width="3" stroke-linecap="round"/>
+      <path d="m473 79 11 10-11 10" fill="none" stroke="#8fd3d0" stroke-width="3"/>
+
+      <g transform="translate(492 0)">
+        <rect width="194" height="178" rx="20" fill="#e5f4f1" stroke="#92cbc6" filter="url(#shadow)"/>
+        <text x="20" y="32" fill="#087c82" font-size="12" font-weight="850" letter-spacing="1.2">03 · CORE METHOD</text>
+        <text x="20" y="68" fill="#17364c" font-size="20" font-weight="820">Selective referent</text>
+        <text x="20" y="104" fill="#4f6975" font-size="14">Estimate a calibrated</text>
+        <text x="20" y="127" fill="#4f6975" font-size="14">candidate posterior.</text>
+        <text x="20" y="153" fill="#087c82" font-size="13" font-weight="780">Accept · clarify · abstain</text>
+      </g>
+      <path d="M696 89h32" stroke="#8fd3d0" stroke-width="3" stroke-linecap="round"/>
+      <path d="m719 79 11 10-11 10" fill="none" stroke="#8fd3d0" stroke-width="3"/>
+
+      <g transform="translate(738 0)">
+        <rect width="194" height="178" rx="20" fill="#ffffff" filter="url(#shadow)"/>
+        <text x="20" y="32" fill="#087c82" font-size="12" font-weight="850" letter-spacing="1.2">04 · SYSTEM</text>
+        <text x="20" y="68" fill="#17364c" font-size="20" font-weight="820">Guarded execution</text>
+        <text x="20" y="104" fill="#5c7180" font-size="14">A confirmed referent enters</text>
+        <text x="20" y="127" fill="#5c7180" font-size="14">a bounded pick/place skill.</text>
+        <text x="20" y="153" fill="#5c7180" font-size="13">Gaze never authorizes motion.</text>
+      </g>
+      <path d="M942 89h32" stroke="#8fd3d0" stroke-width="3" stroke-linecap="round"/>
+      <path d="m965 79 11 10-11 10" fill="none" stroke="#8fd3d0" stroke-width="3"/>
+
+      <g transform="translate(984 0)">
+        <rect width="84" height="178" rx="20" fill="#ffffff" filter="url(#shadow)"/>
+        <text x="42" y="36" fill="#087c82" text-anchor="middle" font-size="12" font-weight="850">05</text>
+        <text x="42" y="72" fill="#17364c" text-anchor="middle" font-size="16" font-weight="820">Measure</text>
+        <text x="42" y="106" fill="#5c7180" text-anchor="middle" font-size="12">risk</text>
+        <text x="42" y="127" fill="#5c7180" text-anchor="middle" font-size="12">coverage</text>
+        <text x="42" y="148" fill="#5c7180" text-anchor="middle" font-size="12">time</text>
+      </g>
+    </g>
+
+    <g transform="translate(56 376)">
+      <rect width="1068" height="208" rx="22" fill="#ffffff" fill-opacity=".075" stroke="#ffffff" stroke-opacity=".18"/>
+      <text x="24" y="36" fill="#9edbd8" font-size="12" font-weight="850" letter-spacing="1.2">CONDITIONAL SECOND STAGE</text>
+      <text x="24" y="76" fill="#ffffff" font-size="21" font-weight="800">Hold the referent fixed. Then ask whether a VLA improves the motion.</text>
+
+      <g transform="translate(24 105)">
+        <rect width="298" height="72" rx="14" fill="#ffffff" fill-opacity=".1" stroke="#ffffff" stroke-opacity=".18"/>
+        <text x="18" y="29" fill="#ffffff" font-size="15" font-weight="780">Guarded deterministic skill</text>
+        <text x="18" y="53" fill="#b9ced2" font-size="13">mandatory reference policy</text>
+      </g>
+      <text x="346" y="149" fill="#90d5d1" font-size="26">↔</text>
+      <g transform="translate(382 105)">
+        <rect width="298" height="72" rx="14" fill="#ffffff" fill-opacity=".1" stroke="#ffffff" stroke-opacity=".18"/>
+        <text x="18" y="29" fill="#ffffff" font-size="15" font-weight="780">Frozen gaze-prompted VLA</text>
+        <text x="18" y="53" fill="#b9ced2" font-size="13">only after inference is reproduced</text>
+      </g>
+      <text x="704" y="149" fill="#90d5d1" font-size="26">↔</text>
+      <g transform="translate(740 105)">
+        <rect width="304" height="72" rx="14" fill="#ffffff" fill-opacity=".1" stroke="#ffffff" stroke-opacity=".18"/>
+        <text x="18" y="29" fill="#ffffff" font-size="15" font-weight="780">xArm-adapted VLA</text>
+        <text x="18" y="53" fill="#b9ced2" font-size="13">retained only after held-out gain</text>
+      </g>
+    </g>
+    <text x="590" y="622" fill="#aac1c6" text-anchor="middle" font-size="13">A negative VLA result does not invalidate the core gaze–language study.</text>
+  </g>
+</svg>

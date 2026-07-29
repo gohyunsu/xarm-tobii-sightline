@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="GazePick research direction: selective gaze-language reference grounding first, robot-policy adaptation second.">
+  <title>Research Direction · GazePick</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+  <link rel="stylesheet" href="../assets/css/gazepick.css">
+  <script src="../assets/js/mathjax-config.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><nav class="nav" aria-label="Primary navigation"><a class="brand" href="../index.html"><span class="brand-mark">GP</span>GazePick</a><button class="nav-toggle" aria-expanded="false">Menu</button><div class="nav-links"><a href="../index.html">Overview</a><a aria-current="page" href="index.html">Direction</a><a href="../foundations/index.html">Foundations</a><a href="../interaction/index.html">Interaction</a><a href="../system/index.html">System</a><a href="../methods/data.html">Data</a><a href="../study/index.html">Evaluation</a><a href="../evidence/related-work.html">Evidence</a><a href="../operations/roadmap.html">Plan</a></div></nav></header>
+
+<main id="main">
+  <section class="hero"><div class="hero-grid"><div><p class="eyebrow">Research direction · reviewed July 2026</p><h1>Resolve the referent first. Compare robot policies second.</h1><p class="lede">GazePick should be studied as <strong>selective gaze–language reference grounding for ambiguous physical manipulation</strong>. Its central question is whether a noisy Tobii cue can reduce wrong-target activation at useful coverage. VLA prompting and xArm adaptation remain meaningful—but only as a separate, conditional policy study.</p><div class="hero-actions"><a class="button teal" href="#verdict">Read the verdict</a><a class="button secondary" href="../study/index.html">Open the evaluation</a></div><div class="toc"><a href="#verdict">Verdict</a><a href="#questions">Questions</a><a href="#ideas">Ideas</a><a href="#design">Design</a><a href="#method">Core method</a><a href="#scope">Scope</a><a href="#gates">Gates</a><a href="#position">Position</a></div></div><figure class="hero-visual"><img src="../assets/img/research-spine.svg" alt="Research spine that prioritizes selective referent grounding and treats VLA comparison as a conditional second stage"><figcaption>Original research map. The core result can remain valid even if a deterministic skill outperforms the VLA.</figcaption></figure></div></section>
+
+  <section class="section" id="verdict"><div class="section-head"><div><p class="eyebrow">01 · Direction verdict</p><h2>A strong project, after one important narrowing</h2></div><p>The proposed task is feasible, visible in a live demonstration, and scientifically testable. The weak framing is a four-component bundle—Tobii, language, VLA, and xArm. The stronger framing identifies one estimation problem, one selective decision, and one physical consequence.</p></div>
+    <div class="grid three">
+      <article class="card teal"><span class="tag teal">Core claim</span><h3>Risk-controlled reference</h3><p>Estimate which candidate the operator means, preserve gaze uncertainty, and decline to act when the evidence is insufficient. Evaluate error together with the fraction of trials handled automatically.</p></article>
+      <article class="card"><span class="tag">System evidence</span><h3>Physical consequence</h3><p>Show that the reference decision reaches a real xArm through a visible confirmation step and independent motion guard. Score intent errors separately from grasp and placement failures.</p></article>
+      <article class="card coral"><span class="tag coral">Conditional extension</span><h3>VLA value</h3><p>With the accepted referent held constant, compare a guarded skill, a frozen visually prompted VLA, and an adapted VLA. Keep the learned policy only if it earns measurable held-out value.</p></article>
+    </div>
+    <div class="verdict"><strong>Recommended one-sentence thesis:</strong> GazePick studies whether calibrated gaze–language fusion can make safer, faster target-reference decisions in visually ambiguous pick-and-place, while a staged physical benchmark determines whether VLA control adds value beyond transparent robot skills.</div>
+    <div class="warning"><strong>Motivation is not evidence:</strong> high-mix manufacturing and logistics are the intended application setting, but the project has not yet established how common or costly this exact ambiguity is in a regional workcell. A partner interview and task observation must validate the industrial scenario before prevalence, throughput, or economic claims are made.</div>
+  </section>
+
+  <section class="section" id="questions"><div class="section-head"><div><p class="eyebrow">02 · Research questions</p><h2>Three questions, ordered by dependency</h2></div><p>Each question has a distinct input, outcome, and stopping rule. This ordering prevents a successful robot rollout from hiding a failed reference model—or a better reference cue from being mistaken for a better action policy.</p></div>
+    <div class="question-box"><p class="question">RQ1 · Under controlled visual ambiguity, can calibrated gaze–language fusion reduce wrong-referent activation at a useful decision coverage compared with language only and nearest-object gaze snapping?</p></div>
+    <div class="grid two" style="margin-top:1rem">
+      <article class="card"><span class="tag">RQ2 · Interaction</span><h3>What is the operational trade-off?</h3><p>Compared with an explicit click, how much time and hand-switching does gaze save, and what extra clarification or confirmation does its uncertainty require?</p></article>
+      <article class="card"><span class="tag">RQ3 · Policy</span><h3>Does VLA complexity pay?</h3><p>Given the same accepted target, does a frozen or xArm-adapted VLA improve held-out placement success enough to justify data collection, latency, compute, and reduced interpretability?</p></article>
+    </div>
+    <div class="prose"><h3>Prespecified hypotheses</h3><table><thead><tr><th>Hypothesis</th><th>Expected pattern</th><th>What would refute it?</th></tr></thead><tbody>
+      <tr><td>H1 · fusion</td><td>Selective gaze–language fusion lowers wrong-referent risk at matched coverage relative to language only and nearest-gaze snapping.</td><td>No risk reduction across useful coverage, or improvement appears only after rejecting nearly all difficult trials.</td></tr>
+      <tr><td>H2 · complementarity</td><td>Gaze helps most when language is deictic and candidate appearance is similar; language helps when gaze mass overlaps adjacent objects.</td><td>One modality dominates across all controlled strata, making fusion unnecessary.</td></tr>
+      <tr><td>H3 · click trade-off</td><td>Click remains the accuracy reference, while gaze competes on target-decision time or reduced manual input.</td><td>Gaze is slower or less accurate with no measurable interaction advantage.</td></tr>
+      <tr><td>H4 · selectivity</td><td>Validation-fit accept/clarify thresholds move the system along a useful risk–coverage frontier.</td><td>Confidence does not predict correctness or does not transfer to held-out users, layouts, and object spacing.</td></tr>
+      <tr><td>H5 · adaptation</td><td>Robot-specific adaptation improves policy success with the referent and test scenes held fixed.</td><td>Only training scenes improve, or a guarded skill remains equal or better after latency and failures are counted.</td></tr>
+    </tbody></table></div>
+  </section>
+
+  <section class="section" id="ideas"><div class="section-head"><div><p class="eyebrow">03 · Idea portfolio</p><h2>One primary study, two earned extensions</h2></div><p>All three ideas fit the same system, but they should not compete for equal priority. The first can produce a coherent result without fine-tuning; the latter two become defensible only after their entry gates pass.</p></div>
+    <div class="prose"><table><thead><tr><th>Priority</th><th>Research idea</th><th>Distinct contribution</th><th>Feasibility</th><th>Decision</th></tr></thead><tbody>
+      <tr><td><span class="tag teal">A · Core</span></td><td><strong>Selective multimodal referent grounding</strong><br>Candidate posterior from uncertain screen gaze and language, followed by accept, clarify, or fallback.</td><td>Risk-controlled physical reference under measured Tobii error; explicit classical and click comparisons.</td><td>High: can be implemented before any VLA training.</td><td>Commit now.</td></tr>
+      <tr><td><span class="tag">B · Extension</span></td><td><strong>Uncertainty-preserving visual policy interface</strong><br>Compare a hard contour, a soft heatmap, and a candidate-posterior representation using the same accepted intent.</td><td>Tests whether preserving uncertainty helps a robot policy beyond existing hard visual prompts.</td><td>Medium: requires a compatible frozen policy and controlled prompt ablation.</td><td>Enter after RQ1 works.</td></tr>
+      <tr><td><span class="tag coral">C · Stretch</span></td><td><strong>Low-data xArm adaptation value curve</strong><br>Measure held-out success, latency, and failure as demonstrations increase.</td><td>Evidence about when xArm-specific VLA adaptation becomes worthwhile for this narrow task.</td><td>Low to medium: data, embodiment adapter, and GPU dependent.</td><td>Enter only after compute/data gates.</td></tr>
+    </tbody></table></div>
+    <div class="grid three">
+      <article class="card flat"><h3>Why A is publishable in principle</h3><p>It joins calibration, selective prediction, multimodal grounding, and physical manipulation around a clear failure: starting a motion for the wrong object. The contribution is an evaluated decision boundary, not a new sensor combination.</p></article>
+      <article class="card flat"><h3>Why B needs care</h3><p>Gaze2Act already uses contours and heatmaps, while Point-VLA and VP-VLA already show explicit visual prompts for VLA grounding. B becomes distinct only if uncertainty representation and selective behavior are central.</p></article>
+      <article class="card flat"><h3>Why C may be a negative result</h3><p>A constrained top-grasp task may be solved better by a deterministic skill. That is still useful evidence: it identifies where a general policy is unnecessary and protects the project from performative fine-tuning.</p></article>
+    </div>
+  </section>
+
+  <section class="section" id="design"><div class="section-head"><div><p class="eyebrow">04 · Experimental architecture</p><h2>Do not mix the reference interface with the action policy</h2></div><p>A single condition ladder that changes both input and policy confounds causal interpretation. GazePick uses two stages: first fix the robot skill and compare target interfaces; then fix the target and compare robot policies.</p></div>
+    <div class="viz"><img src="../assets/img/experiment-axes.svg" alt="Stage A compares language, gaze snap, selective gaze-language fusion, and click with one guarded skill; Stage B compares guarded, frozen VLA, and adapted VLA policies with one fixed referent"><div class="caption">Original experimental design. Stage A establishes whether the interaction resolves reference ambiguity. Stage B asks whether learned control improves execution without changing the target cue.</div></div>
+    <div class="grid two" style="margin-top:1rem">
+      <article class="card teal"><span class="tag teal">Stage A · required</span><h3>Referent-interface experiment</h3><p>Use the same candidate masks, source/destination poses, confirmation rule, and guarded xArm skill for R0 language only, R1 nearest-gaze snap, R2 selective gaze–language fusion, and R3 explicit click.</p><p><strong>Primary evidence:</strong> wrong-referent activation risk, risk–coverage curve, target-decision time, clarification count, and calibration.</p></article>
+      <article class="card"><span class="tag">Stage B · gated</span><h3>Action-policy experiment</h3><p>Use the same accepted referent, scene seeds, safety guard, and action convention for P0 guarded skill, P1 frozen visual-prompt VLA, and P2 xArm-adapted VLA.</p><p><strong>Primary evidence:</strong> pick/place success, completion time, intervention, invalid proposal, compute/latency, and held-out generalization.</p></article>
+    </div>
+    <div class="danger"><strong>Keep the human study small and interpretable:</strong> R0–R3 belong in the target-reference study. P0–P2 can be evaluated mainly with replayable system trials and fixed intents. Do not burden participants with every model checkpoint or training ablation.</div>
+  </section>
+
+  <section class="section" id="method"><div class="section-head"><div><p class="eyebrow">05 · Core technical idea</p><h2>A candidate posterior that can decline to decide</h2></div><p>The model does not turn a gaze point into a click. It distributes probability over the image, integrates that mass over each candidate, combines it with language compatibility, calibrates the result, and applies a selective decision rule.</p></div>
+    <div class="math-block"><div class="math-label">Multimodal candidate score</div>
+      \[
+      s_j=\alpha\log\!\left(\epsilon+\int_{M_j}G(u,v)\,du\,dv\right)
+      +\beta\,s_{\mathrm{lang}}(o_j,\ell)
+      +\gamma\,s_{\mathrm{vision}}(o_j,I),\qquad
+      p_j=\operatorname{softmax}(s/T)_j .
+      \]
+    </div>
+    <div class="grid three">
+      <article class="card"><h3>1 · Gaze likelihood</h3><p>\(G(u,v)\) is a task-window distribution, not a single sample. Its covariance should include recent sample spread and validated screen-mapping error. Integrating over the mask \(M_j\) handles objects of different size more honestly than nearest-centroid distance.</p></article>
+      <article class="card"><h3>2 · Language compatibility</h3><p>\(s_{\mathrm{lang}}\) scores whether a candidate satisfies attributes or relations in the utterance. For the V1 grammar, language should specify the destination and may optionally eliminate impossible source candidates.</p></article>
+      <article class="card"><h3>3 · Calibration</h3><p>The temperature \(T\), cue weights, and decision thresholds are fit on validation episodes only. A 0.8 posterior should correspond to roughly 80% correctness in the relevant test stratum—not merely rank first.</p></article>
+    </div>
+    <div class="math-block coral"><div class="math-label">Selective decision</div>
+      \[
+      \delta(p,q)=
+      \begin{cases}
+      \arg\max_j p_j, & q\ge q_{\min},\ \max_jp_j\ge\tau_p,\ p_{(1)}-p_{(2)}\ge\tau_m,\\
+      \textsf{clarify}, & q\ge q_{\min}\ \text{and evidence is repairable},\\
+      \bot, & \text{otherwise}.
+      \end{cases}
+      \]
+    </div>
+    <p class="media-note">The simplest useful implementation begins with manually verified candidate masks, a Gaussian gaze model, a small rule-based language score, validation-fit temperature scaling, and explicit thresholds. Open-vocabulary detection and learned fusion are later substitutions—not prerequisites for the research question.</p>
+  </section>
+
+  <section class="section" id="scope"><div class="section-head"><div><p class="eyebrow">06 · Scope contract</p><h2>Narrow enough to explain every failure</h2></div><p>The first version should make ambiguity difficult but manipulation mechanics deliberately simple. A broad open-world demo would create more failure modes than the evidence could separate.</p></div>
+    <div class="grid two">
+      <article class="card teal"><h3>Inside the primary study</h3><ul><li>one fixed, fully visible robot-camera feed displayed without undocumented resizing;</li><li>three to six tabletop source candidates with controlled appearance similarity and spacing;</li><li>two distinct, known destination bins named by language;</li><li>screen-based Tobii gaze aligned to a push-to-talk reference window;</li><li>top-down grasps in a reduced and physically guarded xArm workspace;</li><li>visible proposal, confirmation, clarification, click fallback, and synchronized logs;</li><li>held-out users, layouts, or object instances selected before data collection.</li></ul></article>
+      <article class="card"><h3>Outside Version 1</h3><ul><li>gaze from a wearable camera mapped across viewpoints;</li><li>continuous target switching during robot motion;</li><li>part-level grasp-point selection or gaze-selected destinations;</li><li>open-ended conversation and unrestricted object categories;</li><li>human–robot shared workspace operation without protective controls;</li><li>claims of industrial safety, productivity, regional prevalence, or economic benefit;</li><li>end-to-end VLA training as a condition for project completion.</li></ul></article>
+    </div>
+    <div class="scenario"><div class="scenario-label">Reference scene</div><p>Three similar connectors lie inside a fixture; two colored bins sit at known destinations. The operator looks at one connector and says, “Put this in the blue bin.” Before any motion, the stored trial must reveal whether the intended connector was inferred, whether the system accepted or clarified, and whether confirmation occurred.</p></div>
+  </section>
+
+  <section class="section" id="gates"><div class="section-head"><div><p class="eyebrow">07 · Progression rules</p><h2>Earn complexity with evidence</h2></div><p>Each level answers a useful question and supplies a fallback for the next. A failed gate narrows the claim; it does not erase the work already validated.</p></div>
+    <div class="steps">
+      <article class="step"><div><h3>Validate the application premise</h3><p>Ask a manufacturing/logistics partner for concrete cases, current target-specification method, plausible error consequence, typical objects, cycle-time constraints, and acceptable confirmation behavior. If no matching case exists, present the work as a controlled HRI study rather than a regional industrial solution.</p></div></article>
+      <article class="step"><div><h3>Prove clicked robot mechanics</h3><p>Before gaze or VLA, repeated clicked-target trials must establish the mechanical ceiling. If grasp/place reliability is low, simplify the fixture and object geometry until reference errors can be isolated.</p></div></article>
+      <article class="step"><div><h3>Prove screen-gaze observability</h3><p>Measure error on independent markers across the exact rendered camera rectangle. Candidate separation must be large enough that a posterior can discriminate objects at useful coverage.</p></div></article>
+      <article class="step"><div><h3>Establish the selective-reference result</h3><p>Run R0–R3 offline and end to end. Lock calibration and thresholds before the held-out block. If R2 does not improve risk or interaction cost, stop the primary gaze claim and report the boundary.</p></div></article>
+      <article class="step"><div><h3>Reproduce frozen policy inference</h3><p>Benchmark action representation, control rate, server latency, invalid outputs, and guard compatibility. If the frozen policy cannot meet the task contract, retain the guarded skill and do not collect adaptation data yet.</p></div></article>
+      <article class="step"><div><h3>Adapt only after a learning-value gate</h3><p>Use a locked episode schema and group-safe splits. Retain P2 only if it improves held-out policy outcomes over P0/P1 without worsening latency, intervention, or guard rejection.</p></div></article>
+    </div>
+  </section>
+
+  <section class="section" id="position"><div class="section-head"><div><p class="eyebrow">08 · Position against current work</p><h2>The neighboring papers sharpen the contribution</h2></div><p>Current work already demonstrates gaze-conditioned action, visually grounded VLA prompts, and gaze as a learned human-intention prior. GazePick should cite these results as boundaries and place its effort in calibrated, selective, screen-based reference.</p></div>
+    <div class="source-gallery">
+      <figure class="source-media"><img src="https://zuo-kuangji.github.io/Gaze2Act/figures/method.png?v=pdf" alt="Official Gaze2Act method overview showing cross-view gaze grounding and gaze-conditioned robot policy"><figcaption><span class="source-flag">NEAREST GAZE–VLA WORK · 2026</span><h3>Gaze2Act</h3><p>Cross-view gaze grounding, perception-level prompting, and action-level conditioning demonstrate that gaze-conditioned VLA is no longer an open novelty claim. GazePick instead targets calibrated screen-gaze selection and an explicit reject option.</p><p class="source-line"><a href="https://zuo-kuangji.github.io/Gaze2Act/" target="_blank" rel="noreferrer">Official project and figure source ↗</a></p></figcaption></figure>
+      <figure class="source-media"><img src="https://openvla-oft.github.io/static/images/openvla_oft_figure_1.jpeg" alt="Official OpenVLA-OFT overview of efficient VLA adaptation and robot evaluation"><figcaption><span class="source-flag">ADAPTATION REFERENCE · 2025</span><h3>OpenVLA-OFT</h3><p>OFT makes robot-specific adaptation technically plausible, but its official experiments also illustrate that adaptation has substantial data, compute, and evaluation requirements. It is a gated implementation path, not the project thesis.</p><p class="source-line"><a href="https://openvla-oft.github.io/" target="_blank" rel="noreferrer">Official project and figure source ↗</a></p></figcaption></figure>
+    </div>
+    <div class="prose" style="margin-top:1rem"><table><thead><tr><th>Closest line</th><th>What it already establishes</th><th>What GazePick must add</th></tr></thead><tbody>
+      <tr><td>Gaze2Act</td><td>Live gaze can condition perception and action in a real VLA system, including object, part, and dynamic intent.</td><td>Measured screen-gaze uncertainty, selective decision behavior, matched classical baseline, and risk–coverage evidence.</td></tr>
+      <tr><td>Point-VLA / VP-VLA</td><td>Explicit visual regions can resolve text-only spatial ambiguity and improve VLA grounding.</td><td>A human gaze-derived distribution rather than a given box, with calibration and repair when the visual cue is uncertain.</td></tr>
+      <tr><td>GazeVLA</td><td>Gaze can serve as an intention representation learned from human demonstrations.</td><td>Online operator reference as a noisy interaction input; no claim that gaze reveals full intention.</td></tr>
+      <tr><td>GazeGrasp / GAMMA</td><td>Gaze can select objects or parameterize modular robot autonomy.</td><td>Controlled fusion and selective reliability against both simple gaze snapping and VLA policies.</td></tr>
+      <tr><td>Selective prediction</td><td>Reject options trade automatic coverage for lower accepted-case risk.</td><td>Translate that framework into wrong-referent activation on a physical manipulation loop.</td></tr>
+    </tbody></table></div>
+    <div class="verdict"><strong>Best final narrative:</strong> first show a calibrated target-reference decision that knows when not to choose; then show its physical consequence; only then report whether a VLA policy improved the motion. This order supports a useful result under success, null result, or partial failure.</div>
+    <div class="card-actions"><a class="button teal" href="../foundations/index.html">Next: Foundations</a><a class="button secondary" href="../evidence/related-work.html">Inspect the sources</a></div>
+  </section>
+</main>
+<footer class="site-footer"><div class="footer-inner"><span>GazePick · Research Direction</span><span><a href="../foundations/index.html">Next: Foundations →</a></span></div></footer>
+<script src="../assets/js/site.js"></script>
+</body>
+</html>

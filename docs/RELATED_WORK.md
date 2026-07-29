@@ -11,6 +11,10 @@ This file is a compact, persistent complement to the interactive evidence map. C
 - **Gaze-Regularized VLA (Pani and Yang, March 2026):** trains VLA attention to match gaze-like heatmaps without eye tracking at inference. Relevant to gaze supervision, not live referent input. Verify artifacts and review status.
   <https://arxiv.org/abs/2603.23202>
 
+- **GazeVLA (Li et al., April 2026):** pretrains on egocentric human data and models gaze as an intention representation before action generation. Relevant to human-to-robot intention transfer, but distinct from live screen-gaze reference with a reject option.
+  <https://arxiv.org/abs/2604.22615>
+  <https://gazevla.github.io/>
+
 ## Gaze-guided robot interfaces
 
 - **GAMMA / Intent at a Glance (Tay et al., January 2026):** egocentric gaze plus a VLM for intent inference and modular autonomous manipulation. Near neighbor for foundation-model-assisted skill selection.
@@ -36,6 +40,13 @@ This file is a compact, persistent complement to the interactive evidence map. C
 
 - **OpenVLA-OFT:** optimized adaptation with continuous action prediction, action chunks, faster inference, and multi-image support. Preferred candidate when its action contract and compute fit xArm.
   <https://openvla-oft.github.io/>
+
+- **Point-VLA (Yu et al., December 2025):** adds explicit bounding-box prompts to resolve text-only referential ambiguity in cluttered and unseen-object manipulation. It removes novelty from simply supplying a visual region to a VLA; GazePick must contribute how an uncertain human gaze signal produces or declines that region.
+  <https://arxiv.org/abs/2512.18933>
+
+- **VP-VLA (Wang et al., March 2026):** uses crosshairs and bounding boxes as a structured interface between high-level planning and low-level VLA execution, together with an auxiliary grounding objective. Relevant to the policy-interface extension, not evidence for live gaze inference.
+  <https://arxiv.org/abs/2603.22003>
+  <https://visualprompt-vla.github.io/>
 
 - **Diffusion Policy:** strong narrow-domain imitation-learning baseline. Important because OpenVLA does not automatically outperform a focused policy on precise single-task manipulation.
   <https://diffusion-policy.cs.columbia.edu/>
@@ -64,6 +75,9 @@ This file is a compact, persistent complement to the interactive evidence map. C
 
 These methods generate candidates or masks. They do not by themselves establish which object the operator intends.
 
+- **REI-Bench (Jiang et al., ICLR 2026):** benchmarks vague referring expressions in robot task planning and shows that underspecified reference can sharply degrade planning. It supports the ambiguity motivation but studies a different task level and remedy.
+  <https://openreview.net/forum?id=vmBIF25KLf>
+
 ## Calibration and abstention
 
 - **On Calibration of Modern Neural Networks (Guo et al., 2017):** reliability diagrams, expected calibration error, and temperature scaling.
@@ -79,12 +93,12 @@ These methods generate candidates or masks. They do not by themselves establish 
 
 ## Candidate research gap
 
-The most defensible gap is not gaze-conditioned VLA itself. It is the empirical combination of:
+The most defensible gap is not gaze-conditioned or visually prompted VLA itself. It is:
 
 1. screen-based Tobii gaze mapped into the exact robot-camera render with calibrated uncertainty;
 2. selective referent inference with top-two ambiguity, abstention, and confirmation;
-3. an explicit classical gaze baseline that tests whether VLA is necessary;
-4. a frozen-versus-xArm-adapted VLA comparison on held-out physical trials;
-5. reliability and boundary analysis rather than only successful rollouts.
+3. an explicit language-only, nearest-gaze, and click comparison with the guarded action skill held fixed;
+4. risk–coverage, calibration, interaction-time, and boundary analysis rather than only successful rollouts;
+5. a separate frozen-versus-xArm-adapted VLA comparison with the accepted referent held fixed.
 
 This remains a candidate gap until the complete Gaze2Act paper/code and other contemporaneous 2026 work are audited at submission time.

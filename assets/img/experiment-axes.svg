@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 640" role="img" aria-labelledby="title desc">
+  <title id="title">Two-stage GazePick experiment</title>
+  <desc id="desc">Stage A compares four referent interfaces while holding the guarded robot skill fixed. Stage B compares three robot policies while holding the selective referent fixed.</desc>
+  <defs><filter id="shadow"><feDropShadow dx="0" dy="7" stdDeviation="10" flood-opacity=".10"/></filter></defs>
+  <rect width="1160" height="640" rx="30" fill="#fbfcfa"/>
+  <g font-family="system-ui">
+    <text x="52" y="52" fill="#647681" font-size="15" font-weight="850" letter-spacing="2">TWO QUESTIONS · TWO CONTROLLED EXPERIMENTS</text>
+
+    <g transform="translate(52 86)">
+      <rect width="1056" height="218" rx="22" fill="#ffffff" stroke="#cbdad7" filter="url(#shadow)"/>
+      <rect width="210" height="218" rx="22" fill="#17364c"/>
+      <text x="24" y="38" fill="#8fd6d2" font-size="12" font-weight="850" letter-spacing="1.3">STAGE A · CORE</text>
+      <text x="24" y="78" fill="#ffffff" font-size="24" font-weight="820">Which object?</text>
+      <text x="24" y="113" fill="#c2d3d7" font-size="14">Compare interfaces.</text>
+      <text x="24" y="140" fill="#c2d3d7" font-size="14">Hold action policy fixed.</text>
+      <rect x="24" y="166" width="156" height="28" rx="14" fill="#ffffff" fill-opacity=".12"/>
+      <text x="102" y="185" fill="#ffffff" text-anchor="middle" font-size="12" font-weight="760">guarded skill for all</text>
+
+      <g transform="translate(240 38)">
+        <g>
+          <rect width="184" height="142" rx="16" fill="#f5f7f6" stroke="#d7e0de"/>
+          <text x="18" y="31" fill="#60747e" font-size="12" font-weight="850">R0</text>
+          <text x="18" y="63" fill="#17364c" font-size="17" font-weight="800">Language only</text>
+          <text x="18" y="94" fill="#667984" font-size="13">Does ambiguity remain?</text>
+          <text x="18" y="118" fill="#667984" font-size="13">No gaze evidence.</text>
+        </g>
+        <g transform="translate(202 0)">
+          <rect width="184" height="142" rx="16" fill="#f5f7f6" stroke="#d7e0de"/>
+          <text x="18" y="31" fill="#60747e" font-size="12" font-weight="850">R1</text>
+          <text x="18" y="63" fill="#17364c" font-size="17" font-weight="800">Nearest gaze snap</text>
+          <text x="18" y="94" fill="#667984" font-size="13">Transparent classical</text>
+          <text x="18" y="118" fill="#667984" font-size="13">eye-gaze baseline.</text>
+        </g>
+        <g transform="translate(404 0)">
+          <rect width="184" height="142" rx="16" fill="#e5f4f1" stroke="#8fc9c4"/>
+          <text x="18" y="31" fill="#087c82" font-size="12" font-weight="850">R2 · PROPOSED</text>
+          <text x="18" y="63" fill="#17364c" font-size="17" font-weight="800">Selective fusion</text>
+          <text x="18" y="94" fill="#53717a" font-size="13">Calibrated posterior;</text>
+          <text x="18" y="118" fill="#53717a" font-size="13">accept or clarify.</text>
+        </g>
+        <g transform="translate(606 0)">
+          <rect width="184" height="142" rx="16" fill="#f5f7f6" stroke="#d7e0de"/>
+          <text x="18" y="31" fill="#60747e" font-size="12" font-weight="850">R3</text>
+          <text x="18" y="63" fill="#17364c" font-size="17" font-weight="800">Explicit click</text>
+          <text x="18" y="94" fill="#667984" font-size="13">Accuracy reference plus</text>
+          <text x="18" y="118" fill="#667984" font-size="13">interaction cost.</text>
+        </g>
+      </g>
+    </g>
+
+    <path d="M580 319v32" stroke="#8fa8ad" stroke-width="3" stroke-linecap="round"/>
+    <path d="m570 342 10 11 10-11" fill="none" stroke="#8fa8ad" stroke-width="3"/>
+    <rect x="440" y="326" width="280" height="28" rx="14" fill="#edf2f1"/>
+    <text x="580" y="345" fill="#4c646f" text-anchor="middle" font-size="12" font-weight="760">proceed only after R2 is validated</text>
+
+    <g transform="translate(52 368)">
+      <rect width="1056" height="218" rx="22" fill="#ffffff" stroke="#cbdad7" filter="url(#shadow)"/>
+      <rect width="210" height="218" rx="22" fill="#0d676b"/>
+      <text x="24" y="38" fill="#b2e6e2" font-size="12" font-weight="850" letter-spacing="1.3">STAGE B · CONDITIONAL</text>
+      <text x="24" y="78" fill="#ffffff" font-size="24" font-weight="820">How should it move?</text>
+      <text x="24" y="113" fill="#d0e5e5" font-size="14">Compare policies.</text>
+      <text x="24" y="140" fill="#d0e5e5" font-size="14">Hold referent input fixed.</text>
+      <rect x="24" y="166" width="156" height="28" rx="14" fill="#ffffff" fill-opacity=".12"/>
+      <text x="102" y="185" fill="#ffffff" text-anchor="middle" font-size="12" font-weight="760">R2 target for all</text>
+
+      <g transform="translate(277 38)">
+        <g>
+          <rect width="238" height="142" rx="16" fill="#f5f7f6" stroke="#d7e0de"/>
+          <text x="18" y="31" fill="#60747e" font-size="12" font-weight="850">P0 · REFERENCE</text>
+          <text x="18" y="63" fill="#17364c" font-size="17" font-weight="800">Guarded skill</text>
+          <text x="18" y="94" fill="#667984" font-size="13">Known pick/place logic;</text>
+          <text x="18" y="118" fill="#667984" font-size="13">transparent mechanics.</text>
+        </g>
+        <g transform="translate(258 0)">
+          <rect width="238" height="142" rx="16" fill="#f5f7f6" stroke="#d7e0de"/>
+          <text x="18" y="31" fill="#60747e" font-size="12" font-weight="850">P1</text>
+          <text x="18" y="63" fill="#17364c" font-size="17" font-weight="800">Frozen VLA</text>
+          <text x="18" y="94" fill="#667984" font-size="13">Same accepted referent;</text>
+          <text x="18" y="118" fill="#667984" font-size="13">no robot-specific update.</text>
+        </g>
+        <g transform="translate(516 0)">
+          <rect width="238" height="142" rx="16" fill="#fff0ea" stroke="#e2b7aa"/>
+          <text x="18" y="31" fill="#b4533d" font-size="12" font-weight="850">P2 · STRETCH</text>
+          <text x="18" y="63" fill="#17364c" font-size="17" font-weight="800">Adapted VLA</text>
+          <text x="18" y="94" fill="#6d625f" font-size="13">LoRA/OFT only after</text>
+          <text x="18" y="118" fill="#6d625f" font-size="13">data and compute gates.</text>
+        </g>
+      </g>
+    </g>
+    <text x="580" y="620" fill="#60747e" text-anchor="middle" font-size="13">This staged design prevents a better target cue from being mistaken for a better robot policy.</text>
+  </g>
+</svg>

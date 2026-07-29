@@ -1,8 +1,8 @@
 # GazePick
 
-GazePick is a research and implementation atlas for an **uncertainty-aware, gaze–language-conditioned VLA pick-and-place system on xArm**.
+GazePick is a research and implementation atlas for **selective gaze–language reference grounding in guarded physical robot manipulation**.
 
-The operator looks at a target object in the robot-camera view and names the destination. Tobii gaze provides a probabilistic referent cue; language specifies the task and destination; a vision-language-action policy proposes the behavior; an independently guarded xArm layer validates and executes it. Ambiguous intent must lead to abstention or explicit confirmation, not a guess.
+The operator looks at a target object in the robot-camera view and names the destination. Tobii gaze provides a probabilistic referent cue; language specifies the task and destination; the system accepts, clarifies, or abstains before an independently guarded xArm layer executes. A VLA is a conditional action-policy extension, not a prerequisite for the core reference study.
 
 ## Public site
 
@@ -10,26 +10,29 @@ The operator looks at a target object in the robot-camera view and names the des
 
 Every push to `main` deploys the static site through GitHub Actions and GitHub Pages.
 
-## Exact research question
+## Research questions
 
-> In cluttered scenes containing similar objects, does uncertainty-aware fusion of screen-based Tobii gaze and language reduce target-selection time and wrong-object picks on a physical xArm, compared with language-only and classical gaze-to-object interfaces—and does xArm-specific VLA adaptation add value beyond gaze prompting alone?
+> **Primary:** Under controlled visual ambiguity, can calibrated gaze–language fusion reduce wrong-referent activation at a useful decision coverage compared with language only and nearest-object gaze snapping?
+
+> **Conditional policy question:** With the accepted referent held fixed, do frozen or xArm-adapted VLA policies improve held-out pick-and-place outcomes enough to justify their cost and complexity over a guarded deterministic skill?
 
 ## What each component means
 
 - **Tobii:** measures where the operator is likely looking on the displayed robot-camera image. It narrows the referent; it never directly commands motion.
 - **Language:** states the manipulation goal and destination, such as “put it in the blue bin.”
 - **Grounding:** maps a noisy gaze distribution and language evidence to probabilities over candidate source objects.
-- **VLA:** converts the visual scene, instruction, and gaze representation into an action proposal.
+- **Action policy:** begins with a deterministic guarded pick/place skill; frozen and adapted VLAs are separately evaluated alternatives.
 - **Guarded xArm layer:** checks workspace, speed, gripper, confidence, confirmation, and fault state before execution.
 
 ## Site map
 
 - `index.html` — research brief, scenario, question, contribution, and success criteria
+- `direction/` — reviewed thesis, candidate ideas, hypotheses, staged experiments, scope, and stop rules
 - `foundations/` — beginner-friendly concepts: pick-and-place, gaze measurement, referring expressions, VLA, uncertainty, and safety
 - `interaction/` — one complete human–robot episode, interface states, confirmation, and failure recovery
 - `system/` — hardware/software architecture, coordinate transforms, object grounding, xArm execution, timing, and safety
 - `methods/data.html` — episode schema, demonstration collection, VLA integration ladder, LoRA/OFT plan, and rigorous mathematical specification
-- `study/` — baselines, factors, splits, metrics, hypotheses, analysis, and refutation rules
+- `study/` — two-stage interface/policy comparisons, factors, metrics, analysis, and refutation rules
 - `evidence/related-work.html` — searchable primary-source evidence map and explicit novelty boundary
 - `operations/roadmap.html` — July–November execution plan, workstreams, decision log, study curriculum, risks, and definition of done
 
@@ -39,8 +42,10 @@ Gaze-conditioned VLA control is not itself novel: Gaze2Act demonstrated object-,
 
 1. calibrated **screen-to-camera gaze uncertainty** for an xArm workcell;
 2. **probabilistic grounding with abstention and confirmation** under similar-object ambiguity;
-3. a physical comparison of language-only, classical gaze snapping, gaze prompting, and xArm-adapted VLA conditions;
-4. an auditable xArm episode dataset and evidence about when lightweight adaptation is—or is not—worthwhile.
+3. a physical referent-interface comparison that holds the guarded action skill fixed;
+4. an auditable xArm episode dataset and a separate policy comparison that tests whether lightweight VLA adaptation is—or is not—worthwhile.
+
+The manufacturing/logistics scenario is a motivation to validate with the matched team or an industry partner; it is not yet evidence about regional prevalence, throughput, or economic benefit.
 
 ## Local preview
 
@@ -49,6 +54,12 @@ python3 -m http.server 8877 --bind 127.0.0.1
 ```
 
 Open <http://127.0.0.1:8877/>. External publication and manufacturer media require network access; every core explanation remains available as text and original SVG diagrams.
+
+Validate page language, navigation, local links, fragments, IDs, and image alternative text:
+
+```bash
+python3 scripts/validate_site.py
+```
 
 ## Status
 
